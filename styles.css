@@ -1,0 +1,84 @@
+/* style.css */
+
+    body, html {
+        
+                height: 100%;
+         }
+
+    body {
+                background-color: #333333; /* Dark grey background color */
+                color: #ffffff; /* Light text color for contrast */
+            }
+
+    img {                                   /* Initial Photo of Viewing */
+
+                display: block;                     /* ***display: block*** - Treates the Object as a 'block level element'*/
+                                                    /* 'Block-Level' means anything that starts with the line, ending with it*/
+
+                margin-left: auto;                  /* 'Margin' --- Creates space on the (selected) side and provides margins*/
+                margin-right: auto;
+
+                border-radius: 110px;                /* Rounded corners */
+
+                width: 500px;
+    }
+
+            .myName{
+                text-align: center;
+
+                font-size: 40px;
+                font-weight: bolder;
+                /* font-family: - - - Find a font */
+            }
+
+            .subjectDescriptors{
+            text-align: center;
+
+            font-size: 40px;
+            font-weight: bold;
+            }
+       
+             .center-links {
+              display: flex;
+              justify-content: center;
+              gap: 40px; /* Adjust spacing as needed */
+              font-size: 20px;
+            }
+
+            .center-links a {
+                color: #1E90FF; /* Dodger blue for links */
+            }
+            .center-links a:hover {
+                color: #0000ff; /* royal blue on hover */
+                text-decoration: underline; /* Underline on hover */
+            }
+
+    
+            .myLinkedIn{
+
+            }
+
+            .myGitHub{
+
+            }
+
+            .myYouTube{
+
+            }
+        
+            footer {
+
+                display: block;
+                text-align: left;
+                font-size: 14px;
+
+                margin-top: auto;
+                padding: 10px;
+
+                background-color: #494949;
+                color: #aaaaaa; /* Lighter grey for footer text */
+            }
+
+            #copyright {
+                text-align: center;
+            }
