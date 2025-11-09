@@ -3,9 +3,14 @@
     body, html {
         
                 height: 100%;
+                margin: 0;
          }
 
     body {
+
+                display: flex;
+                flex-direction: column;
+
                 background-color: #333333; /* Dark grey background color */
                 color: #ffffff; /* Light text color for contrast */
             }
@@ -64,21 +69,4 @@
 
             .myYouTube{
 
-            }
-        
-            footer {
-
-                display: block;
-                text-align: left;
-                font-size: 14px;
-
-                margin-top: auto;
-                padding: 10px;
-
-                background-color: #494949;
-                color: #aaaaaa; /* Lighter grey for footer text */
-            }
-
-            #copyright {
-                text-align: center;
             }

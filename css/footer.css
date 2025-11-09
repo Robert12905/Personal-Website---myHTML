@@ -1,0 +1,19 @@
+    footer {
+       
+        display: block;
+        text-align: left;
+        font-size: 14px;
+
+        margin-top: auto;
+        padding: 10px;
+
+        background-color: #494949;
+        color: #aaaaaa; /* Lighter grey for footer text */
+
+            }
+
+    #copyright {
+
+        text-align: center;
+        
+            }
