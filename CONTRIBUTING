@@ -9,4 +9,11 @@ This website, as of 4/8/2026 uses the most basic archtecture of HTML, CSS and Ja
 Thanks,
 Robert12905
 
+To ensure the website remains professional and maintainable, all contributions should strive to follow these industry-standard style guides:
+  HTML/CSS: Google HTML/CSS Style Guide
+  JavaScript: Airbnb JavaScript Style Guide
+  Accessibility: All images must include meaningful alt text, and the site should remain navigable via keyboard.
+  Language: Documentation and code comments must be provided in English.
+
 By contributing to this repository, you agree that your contributions will be licensed under the project's MIT license.
+
