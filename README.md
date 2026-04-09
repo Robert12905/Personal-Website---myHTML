@@ -1,4 +1,3 @@
-Personal-Website---myHTML
 This repository acts as a personal web-domain to use as my personal portfolio going forward. This website will be built and maintained over time, which I plan on hosting locally via my homelab. The intention is to provide future employers and peers a clean and concise way of contacting me and gathering information regarding my professional career as a software engineer.
 
 External Interface & Navigation
