@@ -3,11 +3,8 @@ This repository acts as a personal web-domain to use as my personal portfolio go
 
 External Interface & Navigation
 The user interacts with this software through a standard web UI. The interface consists of:
-
 Navigation Bar: Uses anchor links to navigate between the "Home," "About," and "Projects" sections.
-
 External Outbound Links: Interactive buttons linking to , , and .
-
 Responsive Layout: The interface automatically adjusts for desktop, tablet, and mobile viewports.
 
 Technical Documentation
@@ -33,3 +30,8 @@ This project is actively maintained. As of April 2026, I am consistently updatin
 ---
 Any Issue that have been made aware to me have been listed here:
 [Issue Tracker] (https://github.com/Robert12905/Personal-Website---myHTML/issues)
+
+To ensure the long-term stability and security of this portfolio, all major new functionality must be accompanied by automated tests.
+New UI Elements: Must be validated via htmlhint.
+New Logic: Must include unit tests (e.g., Jest) or assertions.
+Security: All new code must pass existing Semgrep and Secret-scanning pipelines
