@@ -1,0 +1,36 @@
+name: Static Analysis
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run HTMLHint
+        run: npx htmlhint "**/*.html"
+      - name: Run ESLint
+        run: npx eslint "**/*.js"
+        
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Semgrep Scan
+        run: |
+          python3 -m pip install semgrep
+          semgrep --config auto .
+          
+  secrets-scan:
+    name: Secret Detection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Scans entire commit history
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
