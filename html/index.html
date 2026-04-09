@@ -15,6 +15,16 @@
 
 <body>
 
+    <script>
+      function scrollToTop(duration) {
+        // ASSERTION: Ensure duration is always a positive number
+        // This helps catch logic errors during your local testing
+        console.assert(duration > 0, "Error: duration must be positive");
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+    
     <p>
         
         <nav class="nav-bar"></nav>
