@@ -30,4 +30,6 @@ This project is licensed under the MIT License. See the  file for the full legal
 uri=github.com/Robert12905/Personal-Website---myHTML)[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12387/badge)](https://www.bestpractices.dev/projects/12387)
 
 This project is actively maintained. As of April 2026, I am consistently updating the content, monitoring for security vulnerabilities, and ensuring the site remains compatible with modern web browsers.
-
+---
+Any Issue that have been made aware to me have been listed here:
+[Issue Tracker] (https://github.com/Robert12905/Personal-Website---myHTML/issues)
