@@ -12,7 +12,10 @@ Open the index.html file in any modern web browser (Chrome, Firefox, Safari, or 
 
 Contributing & Feedback If you find a bug or have a suggestion, please see the file for details on how to report issues or suggest enhancements.
 
-Licenses This project is licensed under the MIT License. See the file for the full legal text. [OpenSSF Scorecard](https://scorecard.dev/viewer/? uri=github.com/Robert12905/Personal-Website---myHTML)OpenSSF Best Practices
+Licenses
+This project is licensed under the MIT License. See the  file for the full legal text.
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Robert12905/Personal-Website---myHTML/badge)](https://scorecard.dev/viewer/?
+uri=github.com/Robert12905/Personal-Website---myHTML)[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12387/badge)](https://www.bestpractices.dev/projects/12387)
 
 This project is actively maintained. As of April 2026, I am consistently updating the content, monitoring for security vulnerabilities, and ensuring the site remains compatible with modern web browsers.
 We welcome improvements to this portfolio! To maintain our OpenSSF Best Practices status, please follow these testing requirements for all change proposals:
