@@ -28,6 +28,12 @@ uri=github.com/Robert12905/Personal-Website---myHTML)[![OpenSSF Best Practices](
 
 This project is actively maintained. As of April 2026, I am consistently updating the content, monitoring for security vulnerabilities, and ensuring the site remains compatible with modern web browsers.
 ---
+We welcome improvements to this portfolio! To maintain our OpenSSF Best Practices status, please follow these testing requirements for all change proposals:
+
+Automated Static Analysis: Ensure all HTML/CSS/JS changes pass the existing npm test (HTMLHint/ESLint) before submitting a Pull Request.
+Adding New Logic: If adding JavaScript functions, you must include an inline console.assert or a corresponding test case in the tests/ directory to validate inputs/outputs.
+Verification: All Pull Requests will trigger a GitHub Actions run. PRs will not be merged unless all CI checks are green.
+
 Any Issue that have been made aware to me have been listed here:
 [Issue Tracker] (https://github.com/Robert12905/Personal-Website---myHTML/issues)
 
