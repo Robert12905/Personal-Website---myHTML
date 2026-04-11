@@ -75,17 +75,18 @@ jobs:
         run: sudo chmod -R 777 ${{ github.workspace }}
 
       - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.7.0
+        uses: zaproxy/action-baseline@v0.12.0
         with:
           target: 'https://Robert12905.github.io/Personal-Website---myHTML/'
           fail_action: false
           token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: zap-baseline-report
 
-      - name: Upload ZAP Report
+      - name: Upload ZAP Report (fallback)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zap-baseline-report
+          name: zap-baseline-report-manual
           path: |
             report_html.html
             report_md.md
