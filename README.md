@@ -23,7 +23,7 @@ If you find a bug or have a suggestion, please see the  file for details on how 
 Licenses
 This project is licensed under the MIT License. See the  file for the full legal text.
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Robert12905/Personal-Website---myHTML/badge)](https://scorecard.dev/viewer/?
-uri=github.com/Robert12905/Personal-Website---myHTML)[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12387/badge)](https://www.bestpractices.dev/projects/12387)
+uri=github.com/Robert12905/Personal-Website---myHTML)[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12387/badge)]([https://www.bestpractices.dev/projects/12387](https://www.bestpractices.dev/en/projects/12387/passing))
 
 This project is actively maintained. As of April 2026, I am consistently updating the content, monitoring for security vulnerabilities, and ensuring the site remains compatible with modern web browsers.
 ---
