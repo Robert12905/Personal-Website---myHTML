@@ -4,6 +4,8 @@ permissions:
   contents: read
   security-events: write
   issues: write
+  actions: write      # Added for artifact fix
+  checks: write
   pull-requests: write
 
 on:
@@ -21,19 +23,14 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Install Linting Dependencies
-        # Fixes the ESLint v10 "Module Not Found" error
         run: npm install eslint@10.2.0 @eslint/js htmlhint --save-dev
-
       - name: Run HTMLHint
         run: npx htmlhint "**/*.html"
-
       - name: Run ESLint
         run: npx eslint "**/*.js"
         
@@ -43,7 +40,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Semgrep Scan
         run: |
           python3 -m pip install semgrep
@@ -57,7 +53,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 
-
       - name: TruffleHog OSS
         uses: trufflesecurity/trufflehog@main
         with:
@@ -76,16 +71,16 @@ jobs:
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          # IMPORTANT: Verify this URL matches your GitHub Pages settings!
+          # VITAL: Ensure this URL opens your site in a private browser window!
           target: 'https://Robert12905.github.io/Personal-Website---myHTML/'
           fail_action: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload ZAP Report
-        # This official step bypasses the "Artifact Container" naming errors
+        if: always() # Ensures report uploads even if the scan had warnings
         uses: actions/upload-artifact@v4
         with:
-          name: zap-scan-report
+          name: zap-baseline-report
           path: |
             report_html.html
             report_md.md
