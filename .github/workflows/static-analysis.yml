@@ -1,31 +1,47 @@
+name: Static Analysis
+
 permissions:
   contents: read
-
-name: Static Analysis
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  # This adds the "Daily" requirement
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 jobs:
   lint:
+    name: Code Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Linting Dependencies
+        # This installs the ESLint engine and the JS ruleset your config needs
+        run: npm install eslint@10.2.0 @eslint/js htmlhint --save-dev
+
       - name: Run HTMLHint
         run: npx htmlhint "**/*.html"
+
       - name: Run ESLint
+        # This uses the eslint.config.js you just added
         run: npx eslint "**/*.js"
         
   semgrep:
+    name: Semgrep SAST
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Semgrep Scan
         run: |
           python3 -m pip install semgrep
@@ -35,9 +51,11 @@ jobs:
     name: Secret Detection
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Scans entire commit history
+          fetch-depth: 0 
+
       - name: TruffleHog OSS
         uses: trufflesecurity/trufflehog@main
         with:
@@ -49,7 +67,7 @@ jobs:
     name: Dynamic Security Scan (ZAP)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Fix workspace permissions for ZAP
@@ -58,7 +76,6 @@ jobs:
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          
+          # Scans your live website
           target: 'https://Robert12905.github.io/Personal-Website---myHTML/'
-          rules_file_name: '.zap/rules.tsv'
-          fail_action: false 
+          fail_action: false
