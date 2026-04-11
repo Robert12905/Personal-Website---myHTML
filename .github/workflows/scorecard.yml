@@ -1,23 +1,21 @@
-permissions:
-  contents: read
-
 name: Scorecard supply-chain security
+
 on:
   push:
     branches: [ "main" ]
   schedule:
     - cron: '30 1 * * 0'
-  workflow_dispatch: # Runs every Sunday
+  workflow_dispatch:
 
-permissions: read-all
+permissions:
+  contents: read
+  security-events: write
+  id-token: write
 
 jobs:
   analysis:
     name: Scorecard analysis
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      id-token: write
 
     steps:
       - name: "Checkout code"
