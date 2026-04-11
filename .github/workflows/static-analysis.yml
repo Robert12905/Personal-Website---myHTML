@@ -2,6 +2,9 @@ name: Static Analysis
 
 permissions:
   contents: read
+  security-events: write
+  issues: write      # Added this so ZAP can create issues for you
+  pull-requests: write
 
 on:
   push:
@@ -18,19 +21,14 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Install Linting Dependencies
-        # This installs the engine + the JS rules for ESLint v10
         run: npm install eslint@10.2.0 @eslint/js htmlhint --save-dev
-
       - name: Run HTMLHint
         run: npx htmlhint "**/*.html"
-
       - name: Run ESLint
         run: npx eslint "**/*.js"
         
@@ -40,7 +38,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Semgrep Scan
         run: |
           python3 -m pip install semgrep
@@ -53,13 +50,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Needed for TruffleHog to see history
-
+          fetch-depth: 0 
       - name: TruffleHog OSS
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          # Removed base/head to avoid the "Same Commit" error
 
   dynamic-analysis:
     name: Dynamic Security Scan (ZAP)
@@ -67,12 +62,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Fix workspace permissions for ZAP
         run: sudo chmod -R 777 ${{ github.workspace }}
-
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
+          # Double check this URL in your browser! 
+          # If it opens your site, keep it. If not, fix it here.
           target: 'https://Robert12905.github.io/Personal-Website---myHTML/'
           fail_action: false
