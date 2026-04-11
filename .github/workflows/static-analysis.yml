@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight UTC
+    - cron: '0 0 * * *' 
 
 jobs:
   lint:
@@ -25,14 +25,13 @@ jobs:
           node-version: '20'
 
       - name: Install Linting Dependencies
-        # This installs the ESLint engine and the JS ruleset your config needs
+        # This installs the engine + the JS rules for ESLint v10
         run: npm install eslint@10.2.0 @eslint/js htmlhint --save-dev
 
       - name: Run HTMLHint
         run: npx htmlhint "**/*.html"
 
       - name: Run ESLint
-        # This uses the eslint.config.js you just added
         run: npx eslint "**/*.js"
         
   semgrep:
@@ -54,14 +53,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0 # Needed for TruffleHog to see history
 
       - name: TruffleHog OSS
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
+          # Removed base/head to avoid the "Same Commit" error
 
   dynamic-analysis:
     name: Dynamic Security Scan (ZAP)
@@ -76,6 +74,5 @@ jobs:
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          # Scans your live website
           target: 'https://Robert12905.github.io/Personal-Website---myHTML/'
           fail_action: false
