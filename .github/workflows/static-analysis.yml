@@ -3,7 +3,7 @@ name: Static Analysis
 permissions:
   contents: read
   security-events: write
-  issues: write      # Added this so ZAP can create issues for you
+  issues: write      # Allows ZAP to create issues
   pull-requests: write
 
 on:
@@ -67,7 +67,8 @@ jobs:
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          # Double check this URL in your browser! 
-          # If it opens your site, keep it. If not, fix it here.
           target: 'https://Robert12905.github.io/Personal-Website---myHTML/'
           fail_action: false
+          # --- THESE ARE THE CRITICAL MISSING LINES ---
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: 'zap-report'
