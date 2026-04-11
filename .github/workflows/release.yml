@@ -1,0 +1,29 @@
+name: Generate Security Checksums
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Checksums
+        run: sha256sum * > CHECKSUMS.txt
+
+      - name: Sign Checksums
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+
+      - name: Create Detached Signature
+        run: gpg --armor --detach-sign CHECKSUMS.txt
+
+      - name: Upload Assets to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            CHECKSUMS.txt
+            CHECKSUMS.txt.sig
